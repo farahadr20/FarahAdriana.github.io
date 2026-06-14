@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Farah Adriana — SDG 7 e-Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --amber:   #F5A623;
+    --amber-d: #C47D0A;
+    --teal:    #0A7EA4;
+    --teal-l:  #B8E8F5;
+    --dark:    #0D1117;
+    --mid:     #1A2230;
+    --muted:   #4A5568;
+    --light:   #F7F9FC;
+    --white:   #FFFFFF;
+    --card-bg: #FFFFFF;
+    --border:  #E2E8F0;
+    --radius:  14px;
+    --shadow:  0 4px 24px rgba(10,30,60,.09);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background: var(--light);
+    color: var(--dark);
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--dark);
+    border-bottom: 2px solid var(--amber);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .75rem 2rem;
+    gap: 1rem;
+  }
+
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: .02em;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: #CBD5E0;
+    text-decoration: none;
+    font-size: .82rem;
+    font-weight: 500;
+    padding: .35rem .7rem;
+    border-radius: 6px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    transition: background .18s, color .18s;
+  }
+
+  .nav-links a:hover {
+    background: var(--amber);
+    color: var(--dark);
+  }
+
+  /* ── HERO ── */
+  #home {
+    background: linear-gradient(135deg, var(--dark) 0%, #112240 55%, #0A3D5C 100%);
+    color: var(--white);
+    padding: 6rem 2rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #home::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 30%, rgba(245,166,35,.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(10,126,164,.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    display: inline-block;
+    background: rgba(245,166,35,.15);
+    border: 1px solid rgba(245,166,35,.4);
+    color: var(--amber);
+    font-size: .78rem;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    padding: .35rem .9rem;
+    border-radius: 999px;
+    margin-bottom: 1.4rem;
+  }
+
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: .6rem;
+  }
+
+  .hero-name span { color: var(--amber); }
+
+  .hero-meta {
+    font-size: .9rem;
+    color: #90A4B7;
+    margin-bottom: 1.6rem;
+    letter-spacing: .03em;
+  }
+
+  .hero-intro {
+    font-size: 1.05rem;
+    color: #C4D3E0;
+    max-width: 620px;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+  }
+
+  .sdg-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    background: rgba(10,126,164,.2);
+    border: 1px solid rgba(10,126,164,.5);
+    color: var(--teal-l);
+    padding: .55rem 1.1rem;
+    border-radius: 10px;
+    font-size: .88rem;
+    font-weight: 500;
+  }
+
+  .sdg-badge .dot {
+    width: 10px; height: 10px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 5rem 1.5rem; }
+  section:nth-child(even) { background: var(--white); }
+
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: .5rem;
+  }
+
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    color: var(--dark);
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform .22s, box-shadow .22s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 36px rgba(10,30,60,.14);
+  }
+
+  .card-video {
+    position: relative;
+    padding-bottom: 56.25%;
+    background: var(--dark);
+  }
+
+  .card-video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  .card-body {
+    padding: 1.4rem 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+  }
+
+  .card-number {
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--teal);
+  }
+
+  .card-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--dark);
+    line-height: 1.25;
+  }
+
+  .card-desc {
+    font-size: .9rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .card-reflection {
+    font-size: .87rem;
+    color: #334155;
+    line-height: 1.65;
+    background: #F0FAF5;
+    border-left: 3px solid var(--amber);
+    padding: .75rem 1rem;
+    border-radius: 0 8px 8px 0;
+  }
+
+  .card-footer { margin-top: auto; padding-top: .5rem; }
+
+  .btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: var(--dark);
+    color: var(--white);
+    font-size: .82rem;
+    font-weight: 600;
+    letter-spacing: .04em;
+    padding: .55rem 1.1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid #2D3748;
+    transition: background .18s, border-color .18s;
+  }
+
+  .btn-github:hover {
+    background: #1E2D3F;
+    border-color: var(--amber);
+  }
+
+  /* ── PROJECT CARD ACCENT ── */
+  .card.project { border-top: 3px solid var(--amber); }
+
+  .card.project .card-number { color: var(--amber-d); }
+
+  .problem-tag {
+    font-size: .75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    color: var(--teal);
+    margin-bottom: .15rem;
+  }
+
+  /* ── REFLECTION ── */
+  #reflection .prose {
+    max-width: 720px;
+    font-size: 1.05rem;
+    color: #2D3748;
+    line-height: 1.85;
+    border-left: 4px solid var(--amber);
+    padding-left: 1.5rem;
+  }
+
+  /* ── SKILLS ── */
+  .skills-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .65rem;
+  }
+
+  .skill-pill {
+    background: var(--dark);
+    color: #E2E8F0;
+    font-size: .82rem;
+    font-weight: 500;
+    padding: .4rem .9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(245,166,35,.3);
+    letter-spacing: .03em;
+    transition: border-color .18s, color .18s;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+
+  /* ── RESOURCES ── */
+  .resources-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .resources-list li a {
+    display: flex;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--dark);
+    font-size: .9rem;
+    font-weight: 500;
+    line-height: 1.45;
+    transition: box-shadow .18s, border-color .18s;
+  }
+
+  .resources-list li a:hover {
+    box-shadow: var(--shadow);
+    border-color: var(--amber);
+  }
+
+  .res-icon {
+    width: 32px; height: 32px;
+    background: var(--amber);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    color: var(--dark);
+    font-size: .95rem;
+    font-weight: 700;
+  }
+
+  .res-note {
+    font-size: .78rem;
+    color: var(--muted);
+    font-weight: 400;
+    display: block;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    color: #718096;
+    text-align: center;
+    padding: 2.5rem 1.5rem;
+    font-size: .85rem;
+    border-top: 2px solid var(--amber);
+  }
+
+  footer strong { color: var(--amber); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: .6rem 1rem; }
+    .nav-brand { font-size: 1rem; }
+    .nav-links a { font-size: .72rem; padding: .3rem .5rem; }
+    section { padding: 3.5rem 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .card { transition: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Farah Adriana</span>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#labs">Labs</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#reflection">Reflection</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#resources">Resources</a></li>
+  </ul>
+</nav>
+
+<!-- HOME / HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">📂 Software Engineering &mdash; UKM e-Portfolio</span>
+    <h1 class="hero-name">Farah <span>Adriana</span><br>Binti Mohd Jamil</h1>
+    <p class="hero-meta">Matric No: A221084 &nbsp;·&nbsp; Programme: Software Engineering &nbsp;·&nbsp; Instructor: Mr. Nelson</p>
+    <p class="hero-intro">I am a Software Engineering student at Universiti Kebangsaan Malaysia (UKM) passionate about mobile development. Through this course, I built Android apps using Kotlin and Jetpack Compose, progressively adding Room, Firebase, Retrofit, and ML Kit. This portfolio documents my journey from basic UI layouts to a full-stack energy tracking app.</p>
+    <div class="sdg-badge">
+      <span class="dot"></span>
+      <span><strong>SDG 7 — Affordable and Clean Energy</strong> &nbsp;|&nbsp; Technology empowering individuals to monitor and reduce energy consumption.</span>
+    </div>
+  </div>
+</section>
+
+<!-- LABS -->
+<section id="labs">
+  <div class="section-inner">
+    <p class="section-label">Coursework</p>
+    <h2 class="section-title">Laboratory Work</h2>
+    <div class="cards-grid">
+
+      <!-- Lab 1 -->
+      <article class="card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/y7GpnUY7e5A"
+                  title="Lab 1 — UI Layouts demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Lab 01</span>
+          <h3 class="card-title">UI Layouts with Jetpack Compose</h3>
+          <p class="card-desc">Built foundational composable layouts using Column, Row, and Box to structure Android app screens.</p>
+          <blockquote class="card-reflection">Through this lab, I gained a better understanding of Jetpack Compose layouts, especially how to use Column, Row, and Box to organize UI components effectively. Although positioning some elements was challenging at first, the experience improved my problem-solving skills and confidence in building app interfaces.</blockquote>
+        </div>
+      </article>
+
+      <!-- Lab 2 -->
+      <article class="card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/puRXoeFW3gg"
+                  title="Lab 2 — Interaction & State demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Lab 02</span>
+          <h3 class="card-title">Interaction &amp; State Management</h3>
+          <p class="card-desc">Explored <code>remember</code> and <code>mutableStateOf</code> to create interactive, reactive user interfaces in Compose.</p>
+          <blockquote class="card-reflection">Through this lab, I learned how to use state management in Jetpack Compose with remember and mutableStateOf to create interactive and responsive user interfaces. Although understanding state and recomposition was challenging at first, the experience helped me better understand how UI updates dynamically based on user input.</blockquote>
+        </div>
+      </article>
+
+      <!-- Lab 3 -->
+      <article class="card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/GjospSC_xM4"
+                  title="Lab 3 — Material Design demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Lab 03</span>
+          <h3 class="card-title">Material Design 3</h3>
+          <p class="card-desc">Applied Material Design principles — color schemes, typography, expandable cards, and animations — for polished, consistent UIs.</p>
+          <blockquote class="card-reflection">Through this lab, I learned how to apply Material Design principles by creating a consistent color scheme, typography, and interactive UI components using Material 3. The experience improved my understanding of designing user-friendly interfaces, while also helping me develop better skills in maintaining visual consistency and enhancing user interaction through expandable cards and animations.</blockquote>
+        </div>
+      </article>
+
+      <!-- Lab 4 -->
+      <article class="card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/hbM5h2EZ6Y4"
+                  title="Lab 4 — Navigation demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Lab 04</span>
+          <h3 class="card-title">Multi-Screen Navigation</h3>
+          <p class="card-desc">Built a multi-screen energy tracker using NavController, NavHost, and a shared ViewModel with custom bottom navigation.</p>
+          <blockquote class="card-reflection">In Lab 4, I built a multi-screen energy usage tracker using NavController, NavHost, and a shared ViewModel with a custom bottom navigation bar. I learned how to manage screen transitions and pass data between composables cleanly. This lab became the direct foundation for Project 1.</blockquote>
+        </div>
+      </article>
+
+      <!-- Lab 5 -->
+      <article class="card">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/pNNb8K3fjAA"
+                  title="Lab 5 — Room Database demo"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Lab 05</span>
+          <h3 class="card-title">Room Database Integration</h3>
+          <p class="card-desc">Integrated Room into the Cupcake app — adding an Order History screen with full navigation and resolving KSP/Gradle build issues.</p>
+          <blockquote class="card-reflection">Lab 5 taught me how to integrate Room database into an existing app, resolving KSP and Gradle build errors along the way. I added an Order History screen with full navigation flow to the Cupcake app. Understanding Room's DAO, Entity, and Database layers here was essential for building Project 2.</blockquote>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Capstone Work</p>
+    <h2 class="section-title">Projects</h2>
+    <div class="cards-grid">
+
+      <!-- Project 1 -->
+      <article class="card project">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/EmUtUaVc1rg"
+                  title="Project 1 — EnergyBuddy VSR"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Project 01 &nbsp;·&nbsp; SDG 7</span>
+          <h3 class="card-title">EnergyBuddy</h3>
+          <p class="problem-tag">Problem Statement</p>
+          <p class="card-desc">Many households are unaware of how much electricity their appliances consume daily, leading to high bills and unnecessary energy waste. EnergyBuddy helps users track appliance usage across six screens aligned with SDG 7.</p>
+          <blockquote class="card-reflection">Project 1 taught me how to architect a multi-screen Compose app using a shared AppViewModel and StateFlow. I learned to connect UI state across screens without prop drilling. Designing for SDG 7 made me think beyond functionality to real-world energy impact.</blockquote>
+          <div class="card-footer">
+            <a class="btn-github" href="https://github.com/farahadr20/A221084_FarahAdriana_MrNelson_Project1.git" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="card project">
+        <div class="card-video">
+          <iframe src="https://www.youtube.com/embed/Kb5tydgrbb8"
+                  title="Project 2 — EnergyBuddy Enhanced VSR"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="card-body">
+          <span class="card-number">Project 02 &nbsp;·&nbsp; SDG 7</span>
+          <h3 class="card-title">EnergyBuddy — Full Stack</h3>
+          <p class="problem-tag">Problem Statement</p>
+          <p class="card-desc">Building on Project 1, users needed cloud-synced data, real-time weather-based tips, and a smart way to add appliances without manual wattage lookup. Project 2 adds Firebase Auth, Firestore, a live weather API, and CameraX + ML Kit scanning.</p>
+          <blockquote class="card-reflection">Integrating four technical pillars in one app taught me to manage complex build configurations — resolving Firebase import conflicts, KSP Gradle issues, and Room entity registration errors. I learned to implement a dual-write strategy (Room-first, then Firestore sync) for reliable offline-first data. CameraX with ML Kit was the most exciting part, scanning real appliance labels and extracting wattage automatically.</blockquote>
+          <div class="card-footer">
+            <a class="btn-github" href="https://github.com/farahadr20/A221084_FarahAdriana_MrNelson_Project2.git" target="_blank" rel="noopener">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section id="reflection">
+  <div class="section-inner">
+    <p class="section-label">Growth</p>
+    <h2 class="section-title">Reflection &amp; Learning Journey</h2>
+    <p class="prose">Starting from Lab 1 where I built my first Jetpack Compose screen, I gradually developed confidence with Android architecture, navigation, and state management. The jump from Project 1 to Project 2 was significant — adding Room, Firestore, Retrofit, and CameraX all at once required careful debugging and a deeper understanding of how Android components interact. I learned that building a real app is less about writing new code and more about understanding error messages, dependency conflicts, and architectural decisions. Most importantly, tying everything to SDG 7 reminded me that software engineering is most meaningful when it solves real problems for real people.</p>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Tech Stack</p>
+    <h2 class="section-title">Skills &amp; Technologies</h2>
+    <div class="skills-wrap" role="list">
+      <span class="skill-pill" role="listitem">Kotlin</span>
+      <span class="skill-pill" role="listitem">Jetpack Compose</span>
+      <span class="skill-pill" role="listitem">Room Database</span>
+      <span class="skill-pill" role="listitem">Firebase Authentication</span>
+      <span class="skill-pill" role="listitem">Firebase Firestore</span>
+      <span class="skill-pill" role="listitem">Retrofit</span>
+      <span class="skill-pill" role="listitem">Open-Meteo API</span>
+      <span class="skill-pill" role="listitem">CameraX</span>
+      <span class="skill-pill" role="listitem">ML Kit Text Recognition</span>
+      <span class="skill-pill" role="listitem">MVVM Architecture</span>
+      <span class="skill-pill" role="listitem">StateFlow</span>
+      <span class="skill-pill" role="listitem">Kotlin Coroutines</span>
+      <span class="skill-pill" role="listitem">Navigation Compose</span>
+      <span class="skill-pill" role="listitem">Material Design 3</span>
+      <span class="skill-pill" role="listitem">Android Studio</span>
+      <span class="skill-pill" role="listitem">GitHub</span>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section id="resources">
+  <div class="section-inner">
+    <p class="section-label">References</p>
+    <h2 class="section-title">Resources</h2>
+    <ul class="resources-list">
+      <li>
+        <a href="https://open-meteo.com" target="_blank" rel="noopener">
+          <span class="res-icon" aria-hidden="true">🌤</span>
+          <span>Open-Meteo API<span class="res-note">Free weather API used in TipsScreen</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://developers.google.com/ml-kit/vision/text-recognition" target="_blank" rel="noopener">
+          <span class="res-icon" aria-hidden="true">🔍</span>
+          <span>Google ML Kit — Text Recognition<span class="res-note">Appliance label scanning &amp; wattage extraction</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://firebase.google.com" target="_blank" rel="noopener">
+          <span class="res-icon" aria-hidden="true">🔥</span>
+          <span>Firebase<span class="res-note">Authentication and Firestore cloud database</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://square.github.io/retrofit" target="_blank" rel="noopener">
+          <span class="res-icon" aria-hidden="true">🔗</span>
+          <span>Retrofit by Square<span class="res-note">HTTP client for API calls</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://developer.android.com/training/data-storage/room" target="_blank" rel="noopener">
+          <span class="res-icon" aria-hidden="true">🗄</span>
+          <span>AndroidX Room<span class="res-note">Local SQLite abstraction layer</span></span>
+        </a>
+      </li>
+      <li>
+        <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener">
+          <span class="res-icon" aria-hidden="true">🤖</span>
+          <span>Claude by Anthropic (AI Assistance)<span class="res-note">Debugging build errors, code review &amp; architecture decisions</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Farah Adriana Binti Mohd Jamil</strong> &nbsp;·&nbsp; A221084 &nbsp;·&nbsp; Software Engineering &nbsp;·&nbsp; UKM &nbsp;·&nbsp; 2025</p>
+  <p style="margin-top:.5rem;font-size:.78rem;opacity:.6;">Instructor: Mr. Nelson &nbsp;·&nbsp; SDG 7 — Affordable and Clean Energy</p>
+</footer>
+
+</body>
+</html>
